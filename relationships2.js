@@ -1,29 +1,47 @@
 
-/* Challenge Summary:  
+/** 
+ * @fileOverview
+ *
+ * Challenge Summary:  
  * Compare two argument input values.  
  * Output which value(s) is/are not numbers, if any.
  * Otherwise, display the relationship if both are numbers.
-*/
+ */
 
-/* Problem Solution */
-
-// To avoid isNaN problems, test with isNumber() from:
-// http://stackoverflow.com/questions/18082/validate-decimal-numbers-in-javascript-isnumeric
+/**
+ * Returns whether the value is a number. 
+ * To avoid isNaN problems, test with isNumber() from:
+ * http://stackoverflow.com/questions/18082/validate-decimal-numbers-in-javascript-isnumeric
+ * @param n - Any number to test
+ * @returns {Boolean} - If true, the value is a number.
+ */
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-// Helper functions return appropriate error string, called by tests.
+/**
+ * Helper function: 
+ * Returns appropriate string when one value is not a number.
+ * @returns {string}
+ */
 var oneError = function (notNumber) { 
   return 'Can\'t compare relationships because ' + notNumber + ' is not a number';
 };
+/**
+ * Helper function: 
+ * Returns appropriate string when both values are not numbers.
+ * @returns {string}
+ */
 var bothError = function(x, y) {
   return 'Can\'t compare relationships because ' + x + ' and ' + y + ' are not numbers';
 };
 
+/** 
+ * Returns error message if one or both values are not numbers.
+ * If both are numbers, returns comparison operator relating the numbers.
+ * @returns {string} - Error message or comparison operator symbol
+ */
 function getRelationship(x, y) {
-
-  // Test each possible error.
   if (!isNumber(x) && isNumber(y)) {
     return oneError(x);
   }
@@ -34,7 +52,6 @@ function getRelationship(x, y) {
     return bothError(x, y);
   }
 
-  // Return comparison if there are no errors.
   else {
       if (x < y) {
           return '<';
@@ -49,7 +66,9 @@ function getRelationship(x, y) {
 }
 
 
-// Some tests for demonstration!
+/** 
+ * Some tests for demonstration!
+ */
 
 var test1 = getRelationship(2, 1);
 console.log('test1: ' + test1);
