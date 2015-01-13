@@ -1,8 +1,7 @@
 
-/* Challenge Summary:  
- * Alphabetize an array of names by last name, putting last names first.
-*/
+/** @fileoverview - Challenge Summary:  Alphabetize an array of names by last name, putting last names first. */
 
+/** @global {array} names - Provided array list of names. */
 var names = [
   'Neil Armstrong',
   'Buzz Aldrin',
@@ -18,18 +17,13 @@ var names = [
   'Harrison Schmitt'
 ];
 
-
-/* Problem Solution */
-
+/** 
+ * 
+ */
 function alphabetizer(names) {
   var givenNames = [];
   var surNames = [];
   var orderedNames = [];
-
-  // Helper function to automate splitting.
-  function splitNames(personIndex, nameIndex) {
-    return names[personIndex].split(' ')[nameIndex];
-  }
 
   for (var i = 0; i < names.length; i++) {
     // Make semantic reference to the last name's index, useful below.
@@ -58,5 +52,9 @@ function alphabetizer(names) {
   return orderedNames;
 }
 
+// Helper function to automate splitting.
+function splitNames(personIndex, nameIndex) {
+  return names[personIndex].split(' ')[nameIndex];
+}
 
 console.log(alphabetizer(names));

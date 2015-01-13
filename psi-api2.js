@@ -1,14 +1,14 @@
-/* Challenge Summary: 
-'Create a totalBytes(psiResults) function that iterates through pageStats in the psiResults object and returns the total number of bytes to load the website.
-
-Then, create a ruleList(psiResults) function that iterates through the localizedRuleNames in ruleResults and returns an array of their strings.'
+/** 
+ * @fileoverview
+ *
+ * Challenge Summary: 
+ * 'Create a totalBytes(psiResults) function that iterates through pageStats in the psiResults object and returns the total number of bytes to load the website.
+ * Then, create a ruleList(psiResults) function that iterates through the localizedRuleNames in ruleResults and returns an array of their strings.'
 */
 
 
-/* Provided API object */
-var psiResults;
-
-psiResults = {
+/** @global {object} psiResults - Provided PSI API results object. */
+var psiResults = {
  'kind': 'pagespeedonline#result',
  'id': '/speed/pagespeed',
  'responseCode': 200,
@@ -110,43 +110,52 @@ psiResults = {
 };
 
 
-/* Problem Solution */
 
+/**  
+ * Iterate through each property name, and total the bytes from countBytes() helper function.  
+ * @param {object} results - Take in API results object.
+ * @returns {number} byteTotal - Byte total to output.
+ */
 function totalBytes(results) {
   var byteTotal = 0;
   var byteProp = '';
-
   var propNames = Object.getOwnPropertyNames(results.pageStats);
-
-  // Semantic helper function to contain checking and totaling. 
-  // Check if property name (from results.pageStats) contains 'Bytes'.
-  // Where found, its value is a number of bytes. Add it to the total.
-  function checkToUpdateTotal(property) {
-    if (propNames[property].indexOf('Bytes') !== -1) {
-      byteProp = propNames[property];
-      byteTotal += parseInt(results.pageStats[byteProp]);
-    }
-  }
-
   for (var i = 0; i < propName.length; i++) {
-    checkToUpdateTotal(i);
+    byteTotal += countBytes(i);
   }
   return byteTotal;
 }
 
-// Iterate through ruleResults to find the localizedRuleNames, then  return an array of their strings. 
+/** 
+ * If any property name includes the string 'Bytes', return that property's number value. 
+ * @param {number} i - index value to iterate through properties
+ * @returns {number} byteCount - the number value of that property (in bytes).  
+ */
+function countBytes(i) {
+  var byteCount = 0;
+  if (propNames[i].indexOf('Bytes') !== -1) {
+    byteProp = propNames[i];
+    byteCount = parseInt(results.pageStats[byteProp]);
+    return byteCount;
+  }
+}
+
+/**
+ * Iterate through API results to find and push all localizedRuleNames, then return an array of their string values. 
+ * @param {object} results - Take in API results object.
+ * @returns {array} ruleNames - Output list of all API localized rule names.  
+ */
 function ruleList(results) {
   var ruleNames = [];
-
-  // Iterate through each property in ruleResults.
   for (var key in results.formattedResults.ruleResults) {
-
-    // Find and push each localizedRuleName value string to the array.
     ruleNames.push(results.formattedResults.ruleResults[key].localizedRuleName);
   }
   return ruleNames;
 }
 
-// Log results!
-console.log(totalBytes(psiResults));
-console.log(ruleList(psiResults));
+/** Log the results! */ 
+function output() {
+  console.log(totalBytes(psiResults));
+  console.log(ruleList(psiResults));
+}
+output();
