@@ -1,7 +1,7 @@
-/** 
+/**
  * @fileoverview
  *
- * Challenge Summary: 
+ * Challenge Summary:
  * 'Create a totalBytes(psiResults) function that iterates through pageStats in the psiResults object and returns the total number of bytes to load the website.
  * Then, create a ruleList(psiResults) function that iterates through the localizedRuleNames in ruleResults and returns an array of their strings.'
 */
@@ -111,7 +111,7 @@ var psiResults = {
 
 
 
-/**  
+/**
  * Iterate through each property name, and total the bytes from countBytes() helper function.  
  *
  * @param {object} results - Take in API results object.
@@ -126,12 +126,12 @@ function totalBytes(results) {
   return byteTotal;
 }
 
-/** 
- * Helper function:  if any property name includes the string 'Bytes', return that property's number value. 
+/**
+ * Helper function:  if any property name includes the string 'Bytes', return that property's number value.
  *
  * @param {number} i - index value to iterate through properties
  * @param {array} propNames - the array of property names
- * @returns {number} byteCount - the number value of that property (in bytes).  
+ * @returns {number} byteCount - the number value of that property (in bytes).
  */
 function countBytes(i, propNames, results) {
   var byteProp = '';
@@ -145,10 +145,10 @@ function countBytes(i, propNames, results) {
 }
 
 /**
- * Iterate through API results to find and push all localizedRuleNames, then return an array of their string values. 
+ * Iterate through API results to find and push all localizedRuleNames, then return an array of their string values.
  *
  * @param {object} results - Take in API results object.
- * @returns {array} ruleNames - Output list of all API localized rule names.  
+ * @returns {array} ruleNames - Output list of all API localized rule names.
  */
 function ruleList(results) {
   var ruleNames = [];
@@ -158,7 +158,7 @@ function ruleList(results) {
   return ruleNames;
 }
 
-/** Log the results! */ 
+/** Log the results! */
 function output() {
   console.log(totalBytes(psiResults));
   console.log(ruleList(psiResults));

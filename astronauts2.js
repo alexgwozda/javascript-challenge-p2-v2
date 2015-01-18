@@ -1,4 +1,3 @@
-
 /** @fileoverview - Challenge Summary:  Alphabetize an array of names by last name, putting last names first. */
 
 /** @global {array} names - Provided array list of names. */
@@ -17,11 +16,11 @@ var names = [
   'Harrison Schmitt'
 ];
 
-/** 
- * Split surName off from givenNames (first and any middle).  
- * 
+/**
+ * Split surName off from givenNames (first and any middle).
+ *
  * @param {array} names
- * @returns {array} orderedNames - alphebetized array by last name.  
+ * @returns {array} orderedNames - alphebetized array by last name.
  */
 function alphabetizer(names) {
   var orderedNames = [];
@@ -53,9 +52,9 @@ function alphabetizer(names) {
   return orderedNames;
 }
 
-/** 
+/**
  * Helper function to automate splitting.
- * 
+ *
  * @param personIndex - the person's name to split
  * @param nameIndex - index of the desired part of name for the person.
  * @returns {string} selectedName - the desired part of name requested by the function call
