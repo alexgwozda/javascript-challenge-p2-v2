@@ -18,43 +18,50 @@ var names = [
 ];
 
 /** 
+ * Split surName off from givenNames (first and any middle).  
  * 
+ * @param {array} names
  */
 function alphabetizer(names) {
-  var givenNames = [];
-  var surNames = [];
   var orderedNames = [];
+  var splitNamesLength;
+  var lastIndex;
+  var givenNames = [];
+  var surName = [];
 
   for (var i = 0; i < names.length; i++) {
-    // Make semantic reference to the last name's index, useful below.
-    var lastIndex = names[p].split(' ').length - 1;
 
-    // Split the first name off into givenNames.
-    givenNames[p] = splitNames(p, 0);
-    
-    // If there are any middle names, also concatenate all but the last surname to givenNames.
-    if (names[p].length > 2) {
+    splitNamesLength = names[i].split(" ").length;
+    lastIndex = splitNamesLength - 1;
+    givenNames = splitName(i, 0);
+
+    /** If there are any middle names, also concatenate all but the last surname to givenNames. */
+    if (names[i].length > 2) {
         for (var j = 1; j < lastIndex; j++) {
-            givenNames[p] += ' ' + splitNames(p, j);
+            givenNames[i] += " " + splitName(i, j);
         }
     }
 
-    // The final name is split off into surNames.  
-    surNames[p] = splitNames(p, lastIndex);
-
-    // Reconstruct list of ordered names that begin with surnames.
-    orderedNames[p] = [surNames[p], givenNames[p]];
-    orderedNames[p] = orderedNames[p].join(', ');
+    surName[i] = splitName(i, lastIndex);
+    orderedNames[i] = [surName, givenNames];
+    orderedNames[i] = orderedNames[i].join(', ');
   }
 
-  // Alphabetize!
+  /** Alphabetize! */
   orderedNames.sort();
   return orderedNames;
 }
 
-// Helper function to automate splitting.
-function splitNames(personIndex, nameIndex) {
-  return names[personIndex].split(' ')[nameIndex];
+/** 
+ * Helper function to automate splitting.
+ * 
+ * @param personIndex
+ * @param nameIndex - index of the desired piece of name for the person.
+ * @returns {string} selectedName - the desired name piece requested by the function call
+ */
+function splitName(personIndex, nameIndex) {
+  var selectedName = names[personIndex].split(' ')[nameIndex];
+  return selectedName;
 }
 
 console.log(alphabetizer(names));
