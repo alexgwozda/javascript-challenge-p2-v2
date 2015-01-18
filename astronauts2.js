@@ -30,7 +30,7 @@ function alphabetizer(names) {
   var surName;
 
   for (var i = 0; i < names.length; i++) {
-    splitNamesLength = names[i].split(" ").length;
+    splitNamesLength = names[i].split(' ').length;
     lastNameIndex = splitNamesLength - 1;
 
     /** Variable givenNames only grabs the first name at first */
@@ -38,7 +38,7 @@ function alphabetizer(names) {
     /** Then if there are any middle names, also concatenate all but the last surname to givenNames. */
     if (names[i].length > 2) {
       for (var j = 1; j < lastNameIndex; j++) {
-          givenNames += " " + splitName(i, j);
+          givenNames += ' ' + splitName(i, j);
       }
     }
 
