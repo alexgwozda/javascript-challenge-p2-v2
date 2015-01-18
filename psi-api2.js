@@ -72,7 +72,7 @@ var psiResults = {
          ]
         }
        },
-       
+
        {
         'result': {
          'format': 'Minifying $1 could save $2 ($3% reduction).',
@@ -96,7 +96,7 @@ var psiResults = {
      }
     ]
    },
-   
+
    'SpriteImages': {
     'localizedRuleName': 'Combine images into CSS sprites',
     'ruleImpact': 0.0
@@ -112,7 +112,7 @@ var psiResults = {
 
 
 /**
- * Iterate through each property name, and total the bytes from countBytes() helper function.  
+ * Iterate through each property name, and total the bytes from countBytes() helper function.
  *
  * @param {object} results - Take in API results object.
  * @returns {number} byteTotal - Byte total to output.
@@ -134,14 +134,15 @@ function totalBytes(results) {
  * @returns {number} byteCount - the number value of that property (in bytes).
  */
 function countBytes(i, propNames, results) {
+  /** Reset variables */
   var byteProp = '';
   var byteCount = 0;
+
   if (propNames[i].indexOf('Bytes') !== -1) {
     byteProp = propNames[i];
     byteCount = parseInt(results.pageStats[byteProp]);
-    return byteCount;
   }
-  else return 0;
+  return byteCount;
 }
 
 /**
