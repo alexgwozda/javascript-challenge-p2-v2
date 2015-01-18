@@ -119,27 +119,29 @@ var psiResults = {
  */
 function totalBytes(results) {
   var byteTotal = 0;
-  var byteProp = '';
   var propNames = Object.getOwnPropertyNames(results.pageStats);
-  for (var i = 0; i < propName.length; i++) {
-    byteTotal += countBytes(i);
+  for (var i = 0; i < propNames.length; i++) {
+    byteTotal += countBytes(i, propNames, results);
   }
   return byteTotal;
 }
 
 /** 
- * If any property name includes the string 'Bytes', return that property's number value. 
+ * Helper function:  if any property name includes the string 'Bytes', return that property's number value. 
  *
  * @param {number} i - index value to iterate through properties
+ * @param {array} propNames - the array of property names
  * @returns {number} byteCount - the number value of that property (in bytes).  
  */
-function countBytes(i) {
+function countBytes(i, propNames, results) {
+  var byteProp = '';
   var byteCount = 0;
   if (propNames[i].indexOf('Bytes') !== -1) {
     byteProp = propNames[i];
     byteCount = parseInt(results.pageStats[byteProp]);
     return byteCount;
   }
+  else return 0;
 }
 
 /**
