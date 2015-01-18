@@ -7,7 +7,7 @@
 */
 
 
-/** @global {object} psiResults - Provided PSI API results object. */
+/** @namespace psiResults - Provided PSI API results object. */
 var psiResults = {
  'kind': 'pagespeedonline#result',
  'id': '/speed/pagespeed',
@@ -113,6 +113,7 @@ var psiResults = {
 
 /**  
  * Iterate through each property name, and total the bytes from countBytes() helper function.  
+ *
  * @param {object} results - Take in API results object.
  * @returns {number} byteTotal - Byte total to output.
  */
@@ -128,6 +129,7 @@ function totalBytes(results) {
 
 /** 
  * If any property name includes the string 'Bytes', return that property's number value. 
+ *
  * @param {number} i - index value to iterate through properties
  * @returns {number} byteCount - the number value of that property (in bytes).  
  */
@@ -142,6 +144,7 @@ function countBytes(i) {
 
 /**
  * Iterate through API results to find and push all localizedRuleNames, then return an array of their string values. 
+ *
  * @param {object} results - Take in API results object.
  * @returns {array} ruleNames - Output list of all API localized rule names.  
  */

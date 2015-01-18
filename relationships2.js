@@ -1,11 +1,10 @@
 
-/** 
- * @fileOverview - Challenge Summary:  Compare two argument input values.  Output which value(s) is/are not numbers, if any. Otherwise, display the relationship if both are numbers.
- */
+/**  @fileOverview - Challenge Summary:  Compare two argument input values.  Output which value(s) is/are not numbers, if any. Otherwise, display the relationship if both are numbers.  */
 
 /**
  * Returns whether the value is a number. 
  * To avoid isNaN problems, test with isNumber() from: http://stackoverflow.com/questions/18082/validate-decimal-numbers-in-javascript-isnumeric
+ *
  * @param n - Any number to test
  * @returns {Boolean} - If true, the value is a number.
  */
@@ -15,6 +14,7 @@ function isNumber(n) {
 
 /**
  * Helper function:  Returns appropriate string when one value is not a number.
+ *
  * @returns {string}
  */
 var oneError = function (notNumber) { 
@@ -22,6 +22,7 @@ var oneError = function (notNumber) {
 };
 /**
  * Helper function: Returns appropriate string when both values are not numbers.
+ *
  * @returns {string}
  */
 var bothError = function(x, y) {
@@ -31,6 +32,7 @@ var bothError = function(x, y) {
 /** 
  * Returns error message if one or both values are not numbers.  
  * If both are numbers, returns comparison operator relating the numbers.
+ *
  * @returns {string} - Error message or comparison operator symbol
  */
 function getRelationship(x, y) {
@@ -60,6 +62,7 @@ function getRelationship(x, y) {
 
 /** 
  * Some tests for demonstration!
+ *
  * @ignore
  */
 function tests() {
