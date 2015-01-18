@@ -27,8 +27,8 @@ function alphabetizer(names) {
   var orderedNames = [];
   var splitNamesLength;
   var lastNameIndex;
-  var givenNames = [];
-  var surName = [];
+  var givenNames;
+  var surName;
 
   for (var i = 0; i < names.length; i++) {
     splitNamesLength = names[i].split(" ").length;
@@ -38,12 +38,12 @@ function alphabetizer(names) {
     givenNames = splitName(i, 0);
     /** Then if there are any middle names, also concatenate all but the last surname to givenNames. */
     if (names[i].length > 2) {
-        for (var j = 1; j < lastINamendex; j++) {
-            givenNames[i] += " " + splitName(i, j);
+        for (var j = 1; j < lastNameIndex; j++) {
+            givenNames += " " + splitName(i, j);
         }
     }
 
-    surName[i] = splitName(i, lastNameIndex);
+    surName = splitName(i, lastNameIndex);
     orderedNames[i] = [surName, givenNames];
     orderedNames[i] = orderedNames[i].join(', ');
   }
